@@ -384,6 +384,24 @@ p {
   margin-bottom: var(--space-xl);
 }
 
+.site-footer__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  margin: 0;
+}
+
+.site-footer__nav a {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.site-footer__nav a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--rule-strong);
+}
+
 .site-footer__legal {
   display: flex;
   flex-wrap: wrap;
@@ -437,15 +455,17 @@ p {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--rule);
 }
 
 .hooks li {
-  padding-block: var(--space-xs);
-  border-bottom: 1px solid var(--rule);
+  padding-block: 0.4rem;
   font-size: var(--size-small);
   line-height: var(--lh-body);
   color: var(--ink-muted);
+}
+
+.hooks li + li {
+  border-top: 1px solid var(--rule);
 }
 
 .hooks__term {
@@ -667,9 +687,10 @@ p {
 
 .contacts__hint {
   margin: 0;
-  max-width: 42ch;
+  max-width: 52ch;
   font-size: var(--size-small);
   color: var(--ink-faint);
+  text-wrap: balance;
 }
 
 .contact-list {
@@ -990,12 +1011,58 @@ p {
   }
 
   .hero__aside {
-    padding-top: 0.2rem;
+    padding-top: 0;
+  }
+
+  /* Десктоп: без коротких полосок в колонках — только длинные линии секций */
+  .hooks li + li {
+    border-top: none;
+  }
+
+  .hooks li {
+    padding-block: 0.28rem;
   }
 
   .situations {
     grid-template-columns: 1fr 1fr;
     column-gap: var(--space-2xl);
+    row-gap: var(--space-md);
+    border-top: 1px solid var(--rule);
+  }
+
+  .situation {
+    border-bottom: none;
+    padding-block: 0;
+  }
+
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+
+  .step {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .contacts {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-lg) var(--space-2xl);
+    align-items: start;
+  }
+
+  .contacts__primary {
+    grid-column: 1 / -1;
+  }
+
+  .contacts__hint {
+    max-width: none;
+  }
+
+  .contact-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-column: 1 / -1;
+    gap: var(--space-md);
   }
 
   .case__row {
@@ -1022,26 +1089,6 @@ p {
   .case-page__figures {
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     column-gap: var(--space-xl);
-  }
-
-  .steps {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-lg);
-  }
-
-  .contacts {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--space-2xl);
-    align-items: start;
-  }
-
-  .contacts__primary {
-    grid-column: 1 / -1;
-  }
-
-  .contact-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-column: 1 / -1;
   }
 
   .task-form__form {
