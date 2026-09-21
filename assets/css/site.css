@@ -1025,6 +1025,10 @@ p {
     padding-top: 0.35rem;
   }
 
+  .hooks {
+    border-top: none;
+  }
+
   .situations {
     grid-template-columns: 1fr 1fr;
     column-gap: var(--space-2xl);
