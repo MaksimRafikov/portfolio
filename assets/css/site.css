@@ -370,15 +370,6 @@ p {
   max-width: 36ch;
 }
 
-.hero__aside-label {
-  margin: 0 0 var(--space-xs);
-  font-family: var(--font-mono);
-  font-size: var(--size-label);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
 .hooks {
   list-style: none;
   margin: 0;
