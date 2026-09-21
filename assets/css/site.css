@@ -74,7 +74,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-h) + 0.75rem);
+  scroll-padding-top: calc(var(--header-h) + 0.5rem);
 }
 
 body {
@@ -292,14 +292,14 @@ p {
 /* Секции */
 
 .section {
-  padding-block: var(--space-2xl);
+  padding-block: var(--space-xl);
   border-top: 1px solid var(--rule);
 }
 
 .section__head {
   display: grid;
-  gap: var(--space-xs);
-  margin-bottom: var(--space-xl);
+  gap: var(--space-2xs);
+  margin-bottom: var(--space-md);
 }
 
 .section__head p {
@@ -433,14 +433,6 @@ p {
 }
 
 /* «Знакомая ситуация?» */
-
-.section--situations {
-  padding-block: var(--space-xl);
-}
-
-.section--situations .section__head {
-  margin-bottom: var(--space-md);
-}
 
 .situations {
   display: grid;
@@ -735,11 +727,11 @@ p {
 /* 5b. Страница кейса ----------------------------------------------------- */
 
 .case-page {
-  padding-block: var(--space-xl) var(--space-2xl);
+  padding-block: var(--space-lg) var(--space-xl);
 }
 
 .case-page__back {
-  margin: 0 0 var(--space-lg);
+  margin: 0 0 var(--space-md);
   font-size: var(--size-small);
 }
 
@@ -756,7 +748,7 @@ p {
 
 .case-page__hero {
   max-width: 42rem;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-md);
 }
 
 .case-page__hero .label {
@@ -783,7 +775,7 @@ p {
 .case-page__figures {
   display: grid;
   gap: var(--space-md);
-  margin: 0 0 var(--space-xl);
+  margin: 0 0 var(--space-md);
   padding: var(--space-md) 0;
   border-block: 1px solid var(--rule);
   list-style: none;
@@ -808,7 +800,7 @@ p {
 }
 
 .case-page__preview {
-  margin: 0 0 var(--space-xl);
+  margin: 0 0 var(--space-md);
   max-width: 40rem;
 }
 
@@ -829,9 +821,9 @@ p {
 
 .case-page__body {
   display: grid;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
   max-width: 42rem;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-md);
 }
 
 .case-page__body h2 {
@@ -885,12 +877,12 @@ p {
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-md);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-md);
 }
 
 .case-page__cta {
   margin: 0;
-  padding-top: var(--space-lg);
+  padding-top: var(--space-md);
   border-top: 1px solid var(--rule);
   max-width: 42rem;
   font-size: var(--size-lead);
@@ -1021,7 +1013,7 @@ p {
 
 /* Якоря не уезжают под липкую шапку */
 [id] {
-  scroll-margin-top: calc(var(--header-h) + var(--space-md));
+  scroll-margin-top: calc(var(--header-h) + var(--space-sm));
 }
 
 /* Появление первого экрана: одна оркестрованная сцена на загрузку */
