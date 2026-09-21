@@ -27,6 +27,12 @@ function updateActiveNav() {
   const nearBottom = window.innerHeight + window.scrollY >= doc.scrollHeight - 48;
   const marker = window.scrollY + Math.min(160, window.innerHeight * 0.25);
 
+  // Пока на первом экране (выше первой секции меню) — ничего не подсвечиваем
+  if (!nearBottom && marker < sections[0].offsetTop - 24) {
+    navLinks.forEach((link) => link.removeAttribute('aria-current'));
+    return;
+  }
+
   let current = sections[0];
   if (nearBottom) {
     current = sections[sections.length - 1];

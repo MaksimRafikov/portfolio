@@ -18,8 +18,10 @@
 
 <header class="site-header" id="top">
   <div class="container site-header__inner">
-    <a class="site-header__name" href="#top">Максим Рафиков</a>
-    <span class="site-header__role">автоматизация · нейросети · AI-агенты</span>
+    <div class="site-header__brand">
+      <a class="site-header__name" href="#top">Максим Рафиков</a>
+      <span class="site-header__role">автоматизация · нейросети · AI-агенты</span>
+    </div>
     <nav class="site-nav" aria-label="Разделы страницы">
       <a href="#situations">Задачи</a>
       <a href="#cases">Кейсы</a>
@@ -33,13 +35,20 @@
 
   <!-- Кто я -->
   <section class="hero">
-    <div class="container">
+    <div class="container hero__layout">
       <div class="hero__main">
         <h1 class="reveal">Автоматизация, нейросети и AI-агенты — для вашего бизнеса</h1>
         <p class="lead hero__lead reveal">
           Настраиваю под вашу задачу: конкретное решение и качественный рабочий результат.
         </p>
-        <ul class="hooks reveal">
+        <div class="hero__actions reveal">
+          <a class="button" href="#cases">Посмотреть кейсы <span class="button__arrow" aria-hidden="true">→</span></a>
+          <a class="link-quiet" href="#contacts" data-open-form>или сразу опишите задачу</a>
+        </div>
+      </div>
+      <aside class="hero__aside reveal" aria-label="Что это значит">
+        <p class="hero__aside-label">Словарь</p>
+        <ul class="hooks">
           <li><span class="hooks__term">Автоматизация</span> — повторяющиеся операции идут по расписанию или по событию, без ручного запуска каждый раз</li>
           <li><span class="hooks__term">Нейросети</span> — разбирают текст, таблицы и файлы по вашей задаче</li>
           <li><span class="hooks__term">AI-агенты</span> — сами проходят цепочку шагов: взяли данные → сделали действие → отдали результат</li>
@@ -47,11 +56,7 @@
           <li><span class="hooks__term">База знаний</span> — ответы и материалы собраны в одном каталоге, а не размазаны по чатам и папкам</li>
           <li><span class="hooks__term">Чат-боты</span> — человек пишет в мессенджер, система отвечает, напоминает или кладёт заявку в таблицу</li>
         </ul>
-        <div class="hero__actions reveal">
-          <a class="button" href="#cases">Посмотреть кейсы <span class="button__arrow" aria-hidden="true">→</span></a>
-          <a class="link-quiet" href="#contacts" data-open-form>или сразу опишите задачу</a>
-        </div>
-      </div>
+      </aside>
     </div>
   </section>
 
