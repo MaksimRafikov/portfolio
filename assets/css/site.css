@@ -55,7 +55,7 @@
   --measure: 62ch;
   --container: 68rem;
   --gutter: clamp(1.25rem, 0.5rem + 3vw, 3rem);
-  --header-h: 4.25rem;
+  --header-h: 4.75rem;
 
   /* Прочее */
   --radius: 2px;
@@ -231,35 +231,47 @@ p {
 .site-header__inner {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--space-2xs) var(--space-md);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs) var(--space-lg);
   min-height: var(--header-h);
-  padding-block: var(--space-xs);
+  padding-block: var(--space-sm);
+}
+
+/* Бренд-локап: имя сверху, роль снизу — не в одной строке с меню */
+.site-header__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
 }
 
 .site-header__name {
   font-family: var(--font-display);
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: -0.01em;
+  line-height: var(--lh-tight);
   text-decoration: none;
   white-space: nowrap;
 }
 
-/* На телефоне подпись под именем не нужна: липкая шапка не должна съедать экран */
+/* На телефоне подпись скрыта: липкая шапка не должна съедать экран */
 .site-header__role {
   display: none;
   font-family: var(--font-mono);
   font-size: var(--size-label);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
+  line-height: var(--lh-snug);
   color: var(--ink-faint);
 }
 
 .site-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2xs) var(--space-sm);
-  margin-left: auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2xs) var(--space-md);
   max-width: 100%;
 }
 
@@ -325,7 +337,13 @@ p {
 /* Первый экран */
 
 .hero {
-  padding-block: var(--space-2xl) var(--space-3xl);
+  /* Сверху меньше: шапка уже отделяет, «воздушная яма» не нужна */
+  padding-block: var(--space-lg) var(--space-2xl);
+}
+
+.hero__layout {
+  display: grid;
+  gap: var(--space-xl);
 }
 
 .hero__meta {
@@ -344,19 +362,27 @@ p {
 }
 
 .hero h1 {
-  max-width: 24ch;
+  max-width: 18ch;
 }
 
 .hero__lead {
   margin-top: var(--space-md);
-  max-width: 52ch;
+  max-width: 36ch;
+}
+
+.hero__aside-label {
+  margin: 0 0 var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--ink-faint);
 }
 
 .hooks {
   list-style: none;
-  margin: var(--space-lg) 0 0;
+  margin: 0;
   padding: 0;
-  max-width: 52ch;
   border-top: 1px solid var(--rule);
 }
 
@@ -378,7 +404,7 @@ p {
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-md);
-  margin-top: var(--space-xl);
+  margin-top: var(--space-lg);
 }
 
 .button {
@@ -880,7 +906,7 @@ p {
 
 @media (min-width: 46rem) {
   .site-header__role {
-    display: inline;
+    display: block;
   }
 
   .site-nav {
@@ -889,6 +915,28 @@ p {
 
   .site-nav a {
     font-size: var(--size-small);
+  }
+
+  .hero {
+    padding-block: var(--space-md) var(--space-xl);
+  }
+
+  .hero__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: clamp(2rem, 4vw, 3.5rem);
+    align-items: start;
+  }
+
+  .hero h1 {
+    max-width: 16ch;
+  }
+
+  .hero__lead {
+    max-width: 38ch;
+  }
+
+  .hero__aside {
+    padding-top: 0.2rem;
   }
 
   .situations {
