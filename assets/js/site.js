@@ -1,4 +1,36 @@
-// Шапка, меню, показ контактов по клику и форма задачи → почта + черновик в Telegram.
+// Шапка, меню, тема, показ контактов по клику и форма задачи → почта + черновик в Telegram.
+
+const THEME_KEY = 'mr-theme';
+
+function currentTheme() {
+  const attr = document.documentElement.getAttribute('data-theme');
+  if (attr === 'dark' || attr === 'light') return attr;
+  return 'light';
+}
+
+function applyTheme(theme) {
+  const next = theme === 'dark' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', next);
+  try {
+    localStorage.setItem(THEME_KEY, next);
+  } catch (_) {}
+
+  document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+    const dark = next === 'dark';
+    btn.setAttribute('aria-pressed', String(dark));
+    btn.setAttribute('aria-label', dark ? 'Включить светлую тему' : 'Включить тёмную тему');
+    const label = btn.querySelector('[data-theme-label]');
+    if (label) label.textContent = dark ? 'Светлая' : 'Тёмная';
+  });
+}
+
+applyTheme(currentTheme());
+
+document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    applyTheme(currentTheme() === 'dark' ? 'light' : 'dark');
+  });
+});
 
 const header = document.querySelector('.site-header');
 const navLinks = [...document.querySelectorAll('.site-nav a')];
