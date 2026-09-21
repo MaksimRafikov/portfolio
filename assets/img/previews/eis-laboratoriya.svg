@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img">
+  <title>Schema: EIS market</title>
+  <rect width="640" height="360" fill="#f8f6f1"/>
+  <rect x="32" y="28" width="576" height="304" fill="#fefdfb" stroke="#e2ddd2" stroke-width="1"/>
+  <text x="52" y="58" font-family="Consolas, monospace" font-size="12" fill="#7f848d" letter-spacing="1.5">ЕИС · СВОДКА</text>
+  <text x="52" y="88" font-family="Georgia, serif" font-size="22" fill="#16181b">Лабораторная диагностика</text>
+  <g font-family="Consolas, monospace">
+    <text x="52" y="130" font-size="12" fill="#7f848d">ЗАКУПКИ</text>
+    <text x="52" y="158" font-size="28" fill="#a6431e">8 491</text>
+    <text x="220" y="130" font-size="12" fill="#7f848d">СУММА</text>
+    <text x="220" y="158" font-size="28" fill="#a6431e">≈ 11,9 млрд ₽</text>
+    <text x="52" y="200" font-size="12" fill="#7f848d">ЗАКАЗЧИКИ</text>
+    <text x="52" y="228" font-size="22" fill="#16181b">1 988</text>
+    <text x="220" y="200" font-size="12" fill="#7f848d">ПОСТАВЩИКИ</text>
+    <text x="220" y="228" font-size="22" fill="#16181b">648</text>
+  </g>
+  <g fill="#a6431e">
+    <rect x="52" y="260" width="220" height="10" opacity="0.85"/>
+    <rect x="52" y="280" width="160" height="10" opacity="0.55"/>
+    <rect x="52" y="300" width="110" height="10" opacity="0.35"/>
+  </g>
+  <text x="300" y="292" font-family="Consolas, monospace" font-size="12" fill="#7f848d">фильтры с причиной отсева</text>
+</svg>
