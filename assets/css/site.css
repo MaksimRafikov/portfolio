@@ -432,7 +432,15 @@ p {
   color: var(--ink-muted);
 }
 
-/* «Если у вас…» */
+/* «Знакомая ситуация?» */
+
+.section--situations {
+  padding-block: var(--space-xl);
+}
+
+.section--situations .section__head {
+  margin-bottom: var(--space-md);
+}
 
 .situations {
   display: grid;
