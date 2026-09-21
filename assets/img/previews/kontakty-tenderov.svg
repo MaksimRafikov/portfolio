@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img">
+  <title>Schema: contact table</title>
+  <rect width="640" height="360" fill="#f8f6f1"/>
+  <rect x="32" y="28" width="576" height="304" fill="#fefdfb" stroke="#e2ddd2" stroke-width="1"/>
+  <text x="52" y="58" font-family="Consolas, monospace" font-size="12" fill="#7f848d" letter-spacing="1.5">ВЫГРУЗКА · ОБЕЗЛИЧЕНО</text>
+  <text x="52" y="88" font-family="Georgia, serif" font-size="22" fill="#16181b">Таблица для отдела продаж</text>
+  <g font-family="Consolas, monospace" font-size="13">
+    <rect x="52" y="112" width="536" height="36" fill="#f1e6df"/>
+    <text x="68" y="134" fill="#7d3216">ИНН</text>
+    <text x="180" y="134" fill="#7d3216">КОМПАНИЯ</text>
+    <text x="360" y="134" fill="#7d3216">EMAIL</text>
+    <text x="500" y="134" fill="#7d3216">ССЫЛКА</text>
+    <line x1="52" y1="160" x2="588" y2="160" stroke="#e2ddd2"/>
+    <text x="68" y="184" fill="#4c515a">77••••••</text>
+    <text x="180" y="184" fill="#4c515a">ООО ······</text>
+    <text x="360" y="184" fill="#4c515a">····@····.ru</text>
+    <text x="500" y="184" fill="#4c515a">тендер</text>
+    <line x1="52" y1="200" x2="588" y2="200" stroke="#e2ddd2"/>
+    <text x="68" y="224" fill="#4c515a">50••••••</text>
+    <text x="180" y="224" fill="#4c515a">АО ······</text>
+    <text x="360" y="224" fill="#4c515a">····@····.ru</text>
+    <text x="500" y="224" fill="#4c515a">тендер</text>
+    <line x1="52" y1="240" x2="588" y2="240" stroke="#e2ddd2"/>
+    <text x="68" y="264" fill="#4c515a">66••••••</text>
+    <text x="180" y="264" fill="#4c515a">ИП ······</text>
+    <text x="360" y="264" fill="#4c515a">····@····.ru</text>
+    <text x="500" y="264" fill="#4c515a">тендер</text>
+  </g>
+  <text x="52" y="308" font-family="Consolas, monospace" font-size="14" fill="#a6431e">40 000+ строк · ≈ 64 000 с email</text>
+</svg>

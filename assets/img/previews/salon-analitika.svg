@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img">
+  <title>Schema: salon call list</title>
+  <rect width="640" height="360" fill="#f8f6f1"/>
+  <rect x="32" y="28" width="576" height="304" fill="#fefdfb" stroke="#e2ddd2" stroke-width="1"/>
+  <text x="52" y="58" font-family="Consolas, monospace" font-size="12" fill="#7f848d" letter-spacing="1.5">СИНТЕТИКА · ВАШ САЛОН</text>
+  <text x="52" y="88" font-family="Georgia, serif" font-size="22" fill="#16181b">Кому звонить на этой неделе</text>
+  <g font-family="Consolas, monospace" font-size="14">
+    <text x="52" y="128" fill="#7f848d">СПИСОК</text>
+    <text x="52" y="160" fill="#a6431e">1</text>
+    <text x="80" y="160" fill="#16181b">ядро · давно не было · высокий LTV</text>
+    <text x="52" y="196" fill="#a6431e">2</text>
+    <text x="80" y="196" fill="#16181b">новички · закрепить визит</text>
+    <text x="52" y="232" fill="#a6431e">3</text>
+    <text x="80" y="232" fill="#16181b">уходят · мягкий возврат</text>
+  </g>
+  <line x1="52" y1="260" x2="588" y2="260" stroke="#e2ddd2"/>
+  <text x="52" y="292" font-family="Consolas, monospace" font-size="13" fill="#a6431e">30 000+ · 130 000+ · 2 списка</text>
+  <text x="52" y="316" font-family="Consolas, monospace" font-size="12" fill="#7f848d">без имён, телефонов и названия салона</text>
+</svg>
