@@ -73,7 +73,7 @@
   --measure: 62ch;
   --container: 68rem;
   --gutter: clamp(1.25rem, 0.5rem + 3vw, 3rem);
-  --header-h: 4.75rem;
+  --header-h: 4.25rem;
 
   /* Прочее */
   --radius: 2px;
@@ -257,61 +257,157 @@ p {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-xs) var(--space-lg);
+  gap: var(--space-2xs) var(--space-md);
   min-height: var(--header-h);
-  padding-block: var(--space-sm);
+  padding-block: 0.65rem;
 }
 
-/* Бренд-локап: имя сверху, роль снизу — не в одной строке с меню */
 .site-header__brand {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
   min-width: 0;
+  flex: 1 1 auto;
 }
 
 .site-header__name {
+  display: inline-block;
   font-family: var(--font-display);
   font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  line-height: var(--lh-tight);
+  line-height: 1;
   text-decoration: none;
   white-space: nowrap;
 }
 
-/* На телефоне подпись скрыта: липкая шапка не должна съедать экран */
-.site-header__role {
-  display: none;
-  font-family: var(--font-mono);
-  font-size: var(--size-label);
-  letter-spacing: 0.06em;
-  line-height: var(--lh-snug);
-  color: var(--ink-faint);
-}
-
-.site-nav {
+.site-header__actions {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
-  gap: var(--space-2xs) var(--space-md);
-  max-width: 100%;
-}
-
-.site-header__tools {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--space-sm) var(--space-md);
+  gap: 0.4rem;
+  flex: 0 0 auto;
   margin-left: auto;
+}
+
+.nav-toggle {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: color var(--speed) var(--ease),
+    border-color var(--speed) var(--ease),
+    background-color var(--speed) var(--ease);
+}
+
+.nav-toggle:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.nav-toggle__bars,
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  display: block;
+  width: 1rem;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform var(--speed) var(--ease), opacity var(--speed) var(--ease);
+}
+
+.nav-toggle__bars {
+  position: relative;
+}
+
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle__bars::before {
+  top: -5px;
+}
+
+.nav-toggle__bars::after {
+  top: 5px;
+}
+
+.site-header[data-nav-open="true"] .nav-toggle__bars {
+  background: transparent;
+}
+
+.site-header[data-nav-open="true"] .nav-toggle__bars::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.site-header[data-nav-open="true"] .nav-toggle__bars::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.site-header[data-nav-open="true"] .nav-toggle {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+
+/* Мобильное меню: скрыто, на всю ширину шапки при открытии */
+.site-nav {
+  display: none;
+  flex: 1 0 100%;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  max-width: 100%;
+  margin-top: var(--space-2xs);
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--rule);
+}
+
+.site-header[data-nav-open="true"] .site-nav {
+  display: flex;
+}
+
+.site-nav a {
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--ink-muted);
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-nav a:last-child {
+  border-bottom: none;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="true"] {
+  color: var(--ink);
 }
 
 .theme-toggle {
   appearance: none;
+  box-sizing: border-box;
   margin: 0;
-  padding: 0.35rem 0.55rem;
+  padding: 0 0.65rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--rule-strong);
   border-radius: var(--radius);
   background: transparent;
@@ -338,24 +434,11 @@ p {
   outline-offset: 2px;
 }
 
-.site-nav a {
-  font-size: 0.875rem;
-  text-decoration: none;
-  color: var(--ink-muted);
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
-}
-
-.site-nav a:hover,
-.site-nav a[aria-current="true"] {
-  color: var(--ink);
-  border-bottom-color: var(--accent);
-}
-
 /* Секции */
 
 .section {
-  padding-block: var(--space-xl);
+  /* На телефоне без двойной «ямы»; шире — в медиазапросе */
+  padding-block: var(--space-md);
   border-top: 1px solid var(--rule);
 }
 
@@ -373,15 +456,15 @@ p {
 
 .site-footer {
   border-top: 1px solid var(--rule);
-  padding-block: var(--space-xl) var(--space-lg);
+  padding-block: var(--space-md);
   font-size: var(--size-small);
   color: var(--ink-muted);
 }
 
 .site-footer__grid {
   display: grid;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-xl);
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
 }
 
 .site-footer__nav {
@@ -418,13 +501,13 @@ p {
 /* Первый экран */
 
 .hero {
-  /* Сверху меньше: шапка уже отделяет, «воздушная яма» не нужна */
-  padding-block: var(--space-lg) var(--space-2xl);
+  /* Сверху меньше: шапка уже отделяет; снизу — без большой ямы перед следующей секцией */
+  padding-block: var(--space-md);
 }
 
 .hero__layout {
   display: grid;
-  gap: var(--space-xl);
+  gap: var(--space-md);
 }
 
 .hero__meta {
@@ -535,6 +618,7 @@ p {
 /* Короткая полоска не дублирует длинную линию следующей секции */
 .situation:last-child {
   border-bottom: none;
+  padding-bottom: var(--space-2xs);
 }
 
 .situation__pain {
@@ -563,6 +647,10 @@ p {
 
 .case:last-child {
   border-bottom: none;
+}
+
+.case:last-child .case__row {
+  padding-bottom: var(--space-2xs);
 }
 
 .case__row {
@@ -654,7 +742,7 @@ p {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: var(--space-lg);
+  gap: var(--space-md);
   counter-reset: step;
 }
 
@@ -687,7 +775,7 @@ p {
 
 .contacts {
   display: grid;
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
 
 .contacts__primary {
@@ -991,20 +1079,73 @@ p {
 /* 6. Адаптив, утилиты, motion -------------------------------------------- */
 
 @media (min-width: 46rem) {
-  .site-header__role {
-    display: block;
+  .site-header__brand {
+    flex: 0 1 auto;
+    order: 1;
+  }
+
+  .nav-toggle {
+    display: none;
   }
 
   .site-nav {
+    order: 2;
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
     gap: var(--space-sm) var(--space-md);
+    margin-top: 0;
+    margin-left: auto;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .site-header__actions {
+    order: 3;
+    margin-left: var(--space-md);
   }
 
   .site-nav a {
     font-size: var(--size-small);
+    padding: 0 0 2px;
+    border-bottom: 1px solid transparent;
+  }
+
+  .site-nav a:last-child {
+    border-bottom: 1px solid transparent;
+  }
+
+  .site-nav a:hover,
+  .site-nav a[aria-current="true"] {
+    border-bottom-color: var(--accent);
   }
 
   .hero {
     padding-block: var(--space-md) var(--space-xl);
+  }
+
+  .section {
+    padding-block: var(--space-xl);
+  }
+
+  .site-footer {
+    padding-block: var(--space-xl) var(--space-lg);
+  }
+
+  .site-footer__grid {
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+  }
+
+  .steps {
+    gap: var(--space-lg);
+  }
+
+  .contacts {
+    gap: var(--space-lg);
   }
 
   .hero__layout {
