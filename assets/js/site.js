@@ -34,6 +34,18 @@ document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
 
 const header = document.querySelector('.site-header');
 const navLinks = [...document.querySelectorAll('.site-nav a')];
+const navToggle = document.querySelector('[data-nav-toggle]');
+const desktopNavMq = window.matchMedia('(min-width: 46rem)');
+
+function setNavOpen(open) {
+  if (!header) return;
+  const next = Boolean(open) && !desktopNavMq.matches;
+  header.dataset.navOpen = String(next);
+  if (navToggle) {
+    navToggle.setAttribute('aria-expanded', String(next));
+    navToggle.setAttribute('aria-label', next ? 'Закрыть меню' : 'Открыть меню');
+  }
+}
 
 if (header) {
   const updateHeader = () => {
@@ -41,6 +53,27 @@ if (header) {
   };
   updateHeader();
   window.addEventListener('scroll', updateHeader, { passive: true });
+}
+
+if (navToggle && header) {
+  navToggle.addEventListener('click', () => {
+    setNavOpen(header.dataset.navOpen !== 'true');
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => setNavOpen(false));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setNavOpen(false);
+  });
+
+  const syncNavToViewport = () => setNavOpen(false);
+  if (typeof desktopNavMq.addEventListener === 'function') {
+    desktopNavMq.addEventListener('change', syncNavToViewport);
+  } else if (typeof desktopNavMq.addListener === 'function') {
+    desktopNavMq.addListener(syncNavToViewport);
+  }
 }
 
 const sections = navLinks
