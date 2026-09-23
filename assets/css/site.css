@@ -558,6 +558,16 @@ p {
   font-weight: 500;
 }
 
+.hooks__term a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.hooks__term a:hover {
+  color: var(--accent);
+}
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -1240,7 +1250,7 @@ p {
   }
 
   .site-footer__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
