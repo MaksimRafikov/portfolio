@@ -28,7 +28,7 @@
 ## Как открыть локально
 
 ```powershell
-cd "C:\Users\Пользователь\Desktop\Coursor\maximrafikov-portfolio"
+# из корня этого репозитория (папка site)
 python -m http.server 5173
 ```
 
