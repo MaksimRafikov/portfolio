@@ -125,8 +125,8 @@ if (sections.length) {
 }
 
 const TG_USER = 'mxm_r';
-const MAIL_TO = 'maxim.rafikov@gmail.com';
-const FORM_ENDPOINT = `https://example.invalid/formsubmit/${MAIL_TO}`;
+const FORM_ENDPOINT = 'https://example.invalid/f/REDACTED_FORM_ID';
+const FORM_HONEYPOT = '_hp_REDACTED';
 
 function revealContact(button) {
   if (!button || button.dataset.revealed === 'true') return;
@@ -168,9 +168,14 @@ function setFormStatus(message, state) {
   else delete taskStatus.dataset.state;
 }
 
+function markFormOpenTime() {
+  if (taskForm) taskForm.dataset.t = String(Date.now());
+}
+
 function openTaskForm() {
   if (!taskFormWrap) return;
   taskFormWrap.hidden = false;
+  markFormOpenTime();
   const first = taskForm?.querySelector('textarea, input:not([tabindex="-1"])');
   first?.focus();
   taskFormWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -230,13 +235,16 @@ function openTelegramDraft(data) {
   window.open(url, '_blank', 'noopener');
 }
 
+markFormOpenTime();
+
 taskForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
 
   const formData = new FormData(taskForm);
-  if (String(formData.get('_honey') || '').trim()) {
-    setFormStatus('Готово. Если письмо не пришло — напишите в Telegram @mxm_r.', 'ok');
+  if (String(formData.get(FORM_HONEYPOT) || '').trim()) {
+    setFormStatus('Заявка принята. Если ответа долго нет — напишите в Telegram @mxm_r.', 'ok');
     taskForm.reset();
+    markFormOpenTime();
     return;
   }
 
@@ -265,6 +273,14 @@ taskForm?.addEventListener('submit', async (event) => {
   if (submitBtn) submitBtn.disabled = true;
   setFormStatus('Отправляю…');
 
+  const body = {
+    ...payload,
+    pdn_consent: 'yes',
+    _submit_time: taskForm.dataset.t || String(Date.now()),
+    _request_id: crypto.randomUUID(),
+    [FORM_HONEYPOT]: '',
+  };
+
   try {
     const response = await fetch(FORM_ENDPOINT, {
       method: 'POST',
@@ -272,29 +288,23 @@ taskForm?.addEventListener('submit', async (event) => {
         'Content-Type': 'application/json',
         Accept: 'application/json',
       },
-      body: JSON.stringify({
-        ...payload,
-        pdn_consent: 'yes',
-        _subject: 'Задача с сайта-портфолио',
-        _template: 'table',
-        _captcha: 'false',
-      }),
+      body: JSON.stringify(body),
     });
 
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
 
-    openTelegramDraft(payload);
     setFormStatus(
-      'Заявка ушла на почту. Открыл черновик в Telegram @mxm_r — нажмите «отправить», если чат открылся.',
+      'Заявка принята. Отвечу на указанный контакт; если срочно — Telegram @mxm_r.',
       'ok'
     );
     taskForm.reset();
+    markFormOpenTime();
   } catch (_error) {
     openTelegramDraft(payload);
     setFormStatus(
-      'Почту сейчас отправить не удалось. Открыл черновик в Telegram @mxm_r — отправьте его вручную.',
+      'Через сайт сейчас не ушло. Открыл черновик в Telegram @mxm_r — отправьте его вручную.',
       'error'
     );
   } finally {
