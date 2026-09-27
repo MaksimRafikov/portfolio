@@ -1,4 +1,4 @@
-// Шапка, меню, тема, показ контактов по клику и форма задачи → почта + черновик в Telegram.
+// Шапка, меню, тема и форма задачи → почта + черновик в Telegram.
 
 const THEME_KEY = 'mr-theme';
 
@@ -127,35 +127,6 @@ if (sections.length) {
 const TG_USER = 'mxm_r';
 const MAIL_TO = 'maxim.rafikov@gmail.com';
 const MAIL_CC = '4093390@mail.ru';
-
-function revealContact(button) {
-  if (!button || button.dataset.revealed === 'true') return;
-
-  const kind = button.dataset.kind;
-  const link = document.createElement('a');
-
-  if (kind === 'phone') {
-    const parts = (button.dataset.parts || '').split(',').map((p) => p.trim()).filter(Boolean);
-    const href = `tel:+${parts.join('')}`;
-    const pretty = parts.length === 5
-      ? `+${parts[0]} ${parts[1]} ${parts[2]}-${parts[3]}-${parts[4]}`
-      : `+${parts.join(' ')}`;
-    link.href = href;
-    link.textContent = pretty;
-  } else if (kind === 'email') {
-    const email = `${button.dataset.user}@${button.dataset.domain}`;
-    link.href = `mailto:${email}`;
-    link.textContent = email;
-  } else {
-    return;
-  }
-
-  button.replaceWith(link);
-}
-
-document.querySelectorAll('[data-reveal-contact]').forEach((button) => {
-  button.addEventListener('click', () => revealContact(button));
-});
 
 const taskFormWrap = document.querySelector('#task-form');
 const taskForm = document.querySelector('#task-form-el');
