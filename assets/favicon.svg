@@ -1,5 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="М">
+  <!-- Максим Рафиков — монограмма М · цвета сайта -->
   <rect width="64" height="64" fill="#f8f6f1"/>
-  <rect x="6" y="52" width="52" height="3" fill="#a6431e"/>
-  <text x="32" y="43" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="600" fill="#16181b" text-anchor="middle"> </text>
+  <!-- Буква М как контур (без текста — стабильно в табах) -->
+  <path fill="#16181b" d="
+    M12 48
+    V16.5
+    h5.2
+    L32 38.8
+    46.8 16.5
+    H52
+    V48
+    h-5.4
+    V26.2
+    L33.4 48
+    h-2.8
+    L17.4 26.2
+    V48
+    Z
+  "/>
+  <rect x="8" y="54" width="48" height="3.5" rx="0.5" fill="#a6431e"/>
 </svg>
