@@ -125,8 +125,7 @@ if (sections.length) {
 }
 
 const TG_USER = 'mxm_r';
-const FORM_ENDPOINT = 'https://example.invalid/f/REDACTED_FORM_ID';
-const FORM_HONEYPOT = '_hp_REDACTED';
+const MAIL_TO = 'maxim.rafikov@gmail.com';
 
 function revealContact(button) {
   if (!button || button.dataset.revealed === 'true') return;
@@ -168,14 +167,9 @@ function setFormStatus(message, state) {
   else delete taskStatus.dataset.state;
 }
 
-function markFormOpenTime() {
-  if (taskForm) taskForm.dataset.t = String(Date.now());
-}
-
 function openTaskForm() {
   if (!taskFormWrap) return;
   taskFormWrap.hidden = false;
-  markFormOpenTime();
   const first = taskForm?.querySelector('textarea, input:not([tabindex="-1"])');
   first?.focus();
   taskFormWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -213,7 +207,7 @@ if (window.location.hash === '#task-form' || window.location.hash === '#contacts
   }
 }
 
-function buildTelegramDraft(data) {
+function buildTaskMessage(data) {
   const lines = [
     'Задача с сайта-портфолио',
     '',
@@ -230,21 +224,26 @@ function buildTelegramDraft(data) {
 }
 
 function openTelegramDraft(data) {
-  const text = buildTelegramDraft(data);
-  const url = `https://t.me/${TG_USER}?text=${encodeURIComponent(text)}`;
+  const url = `https://t.me/${TG_USER}?text=${encodeURIComponent(buildTaskMessage(data))}`;
   window.open(url, '_blank', 'noopener');
 }
 
-markFormOpenTime();
+function openMailtoDraft(data) {
+  const subject = encodeURIComponent('Задача с сайта-портфолио');
+  const body = encodeURIComponent(buildTaskMessage(data));
+  const link = document.createElement('a');
+  link.href = `mailto:${MAIL_TO}?subject=${subject}&body=${body}`;
+  link.rel = 'noopener';
+  link.click();
+}
 
-taskForm?.addEventListener('submit', async (event) => {
+taskForm?.addEventListener('submit', (event) => {
   event.preventDefault();
 
   const formData = new FormData(taskForm);
-  if (String(formData.get(FORM_HONEYPOT) || '').trim()) {
-    setFormStatus('Заявка принята. Если ответа долго нет — напишите в Telegram @mxm_r.', 'ok');
+  if (String(formData.get('_honey') || '').trim()) {
+    setFormStatus('Готово. Если ответа нет — напишите в Telegram @mxm_r.', 'ok');
     taskForm.reset();
-    markFormOpenTime();
     return;
   }
 
@@ -269,45 +268,11 @@ taskForm?.addEventListener('submit', async (event) => {
     return;
   }
 
-  const submitBtn = taskForm.querySelector('button[type="submit"]');
-  if (submitBtn) submitBtn.disabled = true;
-  setFormStatus('Отправляю…');
-
-  const body = {
-    ...payload,
-    pdn_consent: 'yes',
-    _submit_time: taskForm.dataset.t || String(Date.now()),
-    _request_id: crypto.randomUUID(),
-    [FORM_HONEYPOT]: '',
-  };
-
-  try {
-    const response = await fetch(FORM_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(body),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-
-    setFormStatus(
-      'Заявка принята. Отвечу на указанный контакт; если срочно — Telegram @mxm_r.',
-      'ok'
-    );
-    taskForm.reset();
-    markFormOpenTime();
-  } catch (_error) {
-    openTelegramDraft(payload);
-    setFormStatus(
-      'Через сайт сейчас не ушло. Открыл черновик в Telegram @mxm_r — отправьте его вручную.',
-      'error'
-    );
-  } finally {
-    if (submitBtn) submitBtn.disabled = false;
-  }
+  openTelegramDraft(payload);
+  openMailtoDraft(payload);
+  setFormStatus(
+    'Открыл черновик в Telegram @mxm_r и письмо на почту — нажмите «отправить» в открывшемся окне.',
+    'ok'
+  );
+  taskForm.reset();
 });
