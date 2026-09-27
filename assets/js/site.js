@@ -55,6 +55,19 @@ if (header) {
   window.addEventListener('scroll', updateHeader, { passive: true });
 }
 
+/* Повторный клик по #top иначе молчит: hash уже #top, браузер не скроллит. */
+document.querySelectorAll('a[href="#top"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    const url = window.location.pathname + window.location.search;
+    if (window.history.replaceState) {
+      window.history.replaceState(null, '', url);
+    }
+  });
+});
+
 if (navToggle && header) {
   navToggle.addEventListener('click', () => {
     setNavOpen(header.dataset.navOpen !== 'true');
