@@ -126,6 +126,7 @@ if (sections.length) {
 
 const TG_USER = 'mxm_r';
 const MAIL_TO = 'maxim.rafikov@gmail.com';
+const MAIL_CC = '4093390@mail.ru';
 
 function revealContact(button) {
   if (!button || button.dataset.revealed === 'true') return;
@@ -232,7 +233,7 @@ function openMailtoDraft(data) {
   const subject = encodeURIComponent('Задача с сайта-портфолио');
   const body = encodeURIComponent(buildTaskMessage(data));
   const link = document.createElement('a');
-  link.href = `mailto:${MAIL_TO}?subject=${subject}&body=${body}`;
+  link.href = `mailto:${MAIL_TO}?cc=${encodeURIComponent(MAIL_CC)}&subject=${subject}&body=${body}`;
   link.rel = 'noopener';
   link.click();
 }
