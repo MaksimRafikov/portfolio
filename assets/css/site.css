@@ -896,6 +896,36 @@ p {
   overflow: hidden;
 }
 
+.task-form__consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 0;
+  font-size: var(--size-small);
+  color: var(--ink-muted);
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.task-form__consent input {
+  flex: none;
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.15rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.task-form__consent a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.task-form__consent a:hover {
+  color: var(--accent-ink);
+}
+
 .task-form__actions {
   display: flex;
   flex-wrap: wrap;
@@ -1245,6 +1275,7 @@ p {
   }
 
   .task-form__field--wide,
+  .task-form__consent,
   .task-form__actions {
     grid-column: 1 / -1;
   }

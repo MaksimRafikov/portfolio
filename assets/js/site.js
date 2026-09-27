@@ -254,6 +254,13 @@ taskForm?.addEventListener('submit', async (event) => {
     return;
   }
 
+  const consent = taskForm.querySelector('input[name="pdn_consent"]');
+  if (consent && !consent.checked) {
+    setFormStatus('Отметьте согласие на обработку персональных данных.', 'error');
+    consent.focus();
+    return;
+  }
+
   const submitBtn = taskForm.querySelector('button[type="submit"]');
   if (submitBtn) submitBtn.disabled = true;
   setFormStatus('Отправляю…');
@@ -267,6 +274,7 @@ taskForm?.addEventListener('submit', async (event) => {
       },
       body: JSON.stringify({
         ...payload,
+        pdn_consent: 'yes',
         _subject: 'Задача с сайта-портфолио',
         _template: 'table',
         _captcha: 'false',
