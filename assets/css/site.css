@@ -268,9 +268,13 @@ p {
 }
 
 .site-header__name {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 0.55rem;
+  width: max-content;
+  max-width: 100%;
   font-family: var(--font-display);
   font-size: 1.125rem;
   font-weight: 600;
@@ -284,7 +288,9 @@ p {
   display: block;
   width: 1.75rem;
   height: 1.75rem;
-  flex-shrink: 0;
+  max-width: none;
+  flex: 0 0 1.75rem;
+  object-fit: contain;
 }
 
 .site-header__actions {
