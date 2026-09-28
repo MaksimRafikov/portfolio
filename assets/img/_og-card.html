@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #f0eee9;
+    }
+    .card {
+      position: relative;
+      width: 1200px;
+      height: 630px;
+      padding: 72px 88px 64px;
+      background:
+        radial-gradient(ellipse 90% 70% at 12% 18%, #f7f5f1 0%, transparent 55%),
+        radial-gradient(ellipse 70% 55% at 88% 78%, #ebe0d8 0%, transparent 50%),
+        #f0eee9;
+      color: #16181b;
+      font-family: "Golos Text", "Segoe UI", Tahoma, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 8px;
+      background: #a6431e;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 28px;
+      border: 1px solid #ddd9d1;
+      pointer-events: none;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .logo {
+      width: 88px;
+      height: 88px;
+      border-radius: 4px;
+      box-shadow: 0 1px 0 rgba(22, 24, 27, 0.06);
+      flex-shrink: 0;
+    }
+    .mark {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+    }
+    .name {
+      font-family: "Source Serif 4", "PT Serif", Georgia, serif;
+      font-weight: 600;
+      font-size: 64px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: #16181b;
+    }
+    .rule {
+      width: 56px;
+      height: 3px;
+      background: #a6431e;
+      border-radius: 1px;
+    }
+    .tagline {
+      position: relative;
+      z-index: 1;
+      max-width: 920px;
+      margin-top: 8px;
+      font-size: 34px;
+      font-weight: 500;
+      line-height: 1.35;
+      color: #4c515a;
+    }
+    .foot {
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      padding-top: 28px;
+      border-top: 1px solid #ddd9d1;
+      font-family: "IBM Plex Mono", Consolas, monospace;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+    }
+    .domain { color: #a6431e; }
+    .place { color: #7f848d; }
+  </style>
+</head>
+<body>
+  <div class="card" id="og">
+    <div class="brand">
+      <img class="logo" src="../favicon.svg" width="88" height="88" alt="">
+      <div class="mark">
+        <div class="name">Максим Рафиков</div>
+        <div class="rule" aria-hidden="true"></div>
+      </div>
+    </div>
+    <p class="tagline">Автоматизация, нейросети и AI-агенты — для вашего бизнеса</p>
+    <div class="foot">
+      <span class="domain">maximrafikov.ru</span>
+      <span class="place">Уфа</span>
+    </div>
+  </div>
+</body>
+</html>
