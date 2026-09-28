@@ -1058,6 +1058,12 @@ p {
   background: var(--surface);
 }
 
+.case-page__preview--shot img {
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+}
+
 .case-page__preview figcaption {
   margin-top: var(--space-2xs);
   font-size: var(--size-small);
