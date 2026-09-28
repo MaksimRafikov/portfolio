@@ -41,46 +41,40 @@
       border: 1px solid #ddd9d1;
       pointer-events: none;
     }
+    /* Как в шапке сайта: лого + имя в один ряд, по центру */
     .brand {
       display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
       align-items: center;
-      gap: 22px;
-      margin-bottom: 40px;
+      gap: 20px;
+      margin-bottom: 36px;
       position: relative;
       z-index: 1;
+      width: max-content;
+      max-width: 100%;
     }
     .logo {
-      width: 88px;
-      height: 88px;
-      border-radius: 4px;
-      box-shadow: 0 1px 0 rgba(22, 24, 27, 0.06);
-      flex-shrink: 0;
-    }
-    .mark {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      min-width: 0;
+      display: block;
+      width: 72px;
+      height: 72px;
+      flex: 0 0 72px;
+      object-fit: contain;
+      border-radius: 3px;
     }
     .name {
       font-family: "Source Serif 4", "PT Serif", Georgia, serif;
       font-weight: 600;
-      font-size: 64px;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
+      font-size: 56px;
+      line-height: 1;
+      letter-spacing: -0.01em;
       color: #16181b;
-    }
-    .rule {
-      width: 56px;
-      height: 3px;
-      background: #a6431e;
-      border-radius: 1px;
+      white-space: nowrap;
     }
     .tagline {
       position: relative;
       z-index: 1;
       max-width: 920px;
-      margin-top: 8px;
       font-size: 34px;
       font-weight: 500;
       line-height: 1.35;
@@ -107,11 +101,8 @@
 <body>
   <div class="card" id="og">
     <div class="brand">
-      <img class="logo" src="../favicon.svg" width="88" height="88" alt="">
-      <div class="mark">
-        <div class="name">Максим Рафиков</div>
-        <div class="rule" aria-hidden="true"></div>
-      </div>
+      <img class="logo" src="../favicon.svg" width="72" height="72" alt="">
+      <div class="name">Максим Рафиков</div>
     </div>
     <p class="tagline">Автоматизация, нейросети и AI-агенты — для вашего бизнеса</p>
     <div class="foot">
