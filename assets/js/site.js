@@ -1,6 +1,52 @@
-// Шапка, меню, тема и форма задачи → почта + черновик в Telegram.
+// Header, menu, theme, and task form → email + Telegram draft.
 
 const THEME_KEY = 'mr-theme';
+const LANG = (document.documentElement.lang || 'ru').toLowerCase().startsWith('en')
+  ? 'en'
+  : 'ru';
+
+const I18N = {
+  ru: {
+    themeDark: 'Тёмная',
+    themeLight: 'Светлая',
+    themeToDark: 'Включить тёмную тему',
+    themeToLight: 'Включить светлую тему',
+    openMenu: 'Открыть меню',
+    closeMenu: 'Закрыть меню',
+    formOkHoney: 'Готово. Если ответа нет — напишите в Telegram @mxm_r.',
+    formNeedFields: 'Заполните контакт и задачу.',
+    formNeedConsent: 'Отметьте согласие на обработку персональных данных.',
+    formOk: 'Открыл черновик в Telegram @mxm_r и письмо на почту — нажмите «отправить» в открывшемся окне.',
+    mailSubject: 'Задача с сайта-портфолио',
+    messageTitle: 'Задача с сайта-портфолио',
+    labelName: 'Имя',
+    labelContact: 'Контакт',
+    labelNiche: 'Ниша',
+    labelResult: 'Результат',
+    labelDeadline: 'Срок',
+  },
+  en: {
+    themeDark: 'Dark',
+    themeLight: 'Light',
+    themeToDark: 'Switch to dark theme',
+    themeToLight: 'Switch to light theme',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+    formOkHoney: 'Done. If there is no reply, message Telegram @mxm_r.',
+    formNeedFields: 'Please fill in contact and task.',
+    formNeedConsent: 'Please confirm consent to personal data processing.',
+    formOk: 'Opened a Telegram draft to @mxm_r and an email draft — press send in the window that opened.',
+    mailSubject: 'Task from portfolio site',
+    messageTitle: 'Task from portfolio site',
+    labelName: 'Name',
+    labelContact: 'Contact',
+    labelNiche: 'Niche',
+    labelResult: 'Result',
+    labelDeadline: 'Deadline',
+  },
+};
+
+const t = I18N[LANG];
 
 function currentTheme() {
   const attr = document.documentElement.getAttribute('data-theme');
@@ -18,9 +64,9 @@ function applyTheme(theme) {
   document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
     const dark = next === 'dark';
     btn.setAttribute('aria-pressed', String(dark));
-    btn.setAttribute('aria-label', dark ? 'Включить светлую тему' : 'Включить тёмную тему');
+    btn.setAttribute('aria-label', dark ? t.themeToLight : t.themeToDark);
     const label = btn.querySelector('[data-theme-label]');
-    if (label) label.textContent = dark ? 'Светлая' : 'Тёмная';
+    if (label) label.textContent = dark ? t.themeLight : t.themeDark;
   });
 }
 
@@ -43,7 +89,7 @@ function setNavOpen(open) {
   header.dataset.navOpen = String(next);
   if (navToggle) {
     navToggle.setAttribute('aria-expanded', String(next));
-    navToggle.setAttribute('aria-label', next ? 'Закрыть меню' : 'Открыть меню');
+    navToggle.setAttribute('aria-label', next ? t.closeMenu : t.openMenu);
   }
 }
 
@@ -55,7 +101,7 @@ if (header) {
   window.addEventListener('scroll', updateHeader, { passive: true });
 }
 
-/* Повторный клик по #top иначе молчит: hash уже #top, браузер не скроллит. */
+/* Repeat click on #top is otherwise silent: hash is already #top, browser does not scroll. */
 document.querySelectorAll('a[href="#top"]').forEach((link) => {
   link.addEventListener('click', (event) => {
     event.preventDefault();
@@ -92,7 +138,7 @@ if (navToggle && header) {
 const sections = navLinks
   .map((link) => {
     const href = link.getAttribute('href') || '';
-    // На страницах кейсов ссылки вида ../index.html#cases — секций тут нет.
+    // On case pages links look like ../index.html#cases — no sections here.
     if (!href.startsWith('#')) return null;
     return document.querySelector(href);
   })
@@ -105,7 +151,7 @@ function updateActiveNav() {
   const nearBottom = window.innerHeight + window.scrollY >= doc.scrollHeight - 48;
   const marker = window.scrollY + Math.min(160, window.innerHeight * 0.25);
 
-  // Пока на первом экране (выше первой секции меню) — ничего не подсвечиваем
+  // On the first screen (above the first nav section) — highlight nothing
   if (!nearBottom && marker < sections[0].offsetTop - 24) {
     navLinks.forEach((link) => link.removeAttribute('aria-current'));
     return;
@@ -168,7 +214,7 @@ function closeTaskForm() {
 document.querySelectorAll('[data-open-form]').forEach((el) => {
   el.addEventListener('click', (event) => {
     if (el.tagName === 'A') {
-      // Сначала доскроллим к контактам по якорю, затем откроем форму.
+      // Scroll to contacts via hash first, then open the form.
       window.setTimeout(openTaskForm, 0);
       return;
     }
@@ -186,7 +232,7 @@ document.querySelectorAll('[data-close-form]').forEach((el) => {
 });
 
 if (window.location.hash === '#task-form' || window.location.hash === '#contacts') {
-  // Если пришли с якоря «описать задачу» — сразу раскрыть форму.
+  // Arrived via “describe the task” anchor — open the form right away.
   if (window.location.hash === '#task-form') {
     openTaskForm();
   }
@@ -194,13 +240,13 @@ if (window.location.hash === '#task-form' || window.location.hash === '#contacts
 
 function buildTaskMessage(data) {
   const lines = [
-    'Задача с сайта-портфолио',
+    t.messageTitle,
     '',
-    data.name ? `Имя: ${data.name}` : null,
-    `Контакт: ${data.contact}`,
-    data.niche ? `Ниша: ${data.niche}` : null,
-    data.result ? `Результат: ${data.result}` : null,
-    data.deadline ? `Срок: ${data.deadline}` : null,
+    data.name ? `${t.labelName}: ${data.name}` : null,
+    `${t.labelContact}: ${data.contact}`,
+    data.niche ? `${t.labelNiche}: ${data.niche}` : null,
+    data.result ? `${t.labelResult}: ${data.result}` : null,
+    data.deadline ? `${t.labelDeadline}: ${data.deadline}` : null,
     '',
     data.task,
   ].filter((line) => line !== null);
@@ -214,7 +260,7 @@ function openTelegramDraft(data) {
 }
 
 function openMailtoDraft(data) {
-  const subject = encodeURIComponent('Задача с сайта-портфолио');
+  const subject = encodeURIComponent(t.mailSubject);
   const body = encodeURIComponent(buildTaskMessage(data));
   const link = document.createElement('a');
   link.href = `mailto:${MAIL_TO}?cc=${encodeURIComponent(MAIL_CC)}&subject=${subject}&body=${body}`;
@@ -227,7 +273,7 @@ taskForm?.addEventListener('submit', (event) => {
 
   const formData = new FormData(taskForm);
   if (String(formData.get('_honey') || '').trim()) {
-    setFormStatus('Готово. Если ответа нет — напишите в Telegram @mxm_r.', 'ok');
+    setFormStatus(t.formOkHoney, 'ok');
     taskForm.reset();
     return;
   }
@@ -242,22 +288,19 @@ taskForm?.addEventListener('submit', (event) => {
   };
 
   if (!payload.contact || !payload.task) {
-    setFormStatus('Заполните контакт и задачу.', 'error');
+    setFormStatus(t.formNeedFields, 'error');
     return;
   }
 
   const consent = taskForm.querySelector('input[name="pdn_consent"]');
   if (consent && !consent.checked) {
-    setFormStatus('Отметьте согласие на обработку персональных данных.', 'error');
+    setFormStatus(t.formNeedConsent, 'error');
     consent.focus();
     return;
   }
 
   openTelegramDraft(payload);
   openMailtoDraft(payload);
-  setFormStatus(
-    'Открыл черновик в Telegram @mxm_r и письмо на почту — нажмите «отправить» в открывшемся окне.',
-    'ok'
-  );
+  setFormStatus(t.formOk, 'ok');
   taskForm.reset();
 });

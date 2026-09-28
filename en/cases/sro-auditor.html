@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests">
+<title>SRO limit checks right in the browser — Maxim Rafikov</title>
+<meta name="description" content="Online SRO limit check: upload Excel/CSV, risk highlights, report. Files never leave your machine.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://maximrafikov.ru/en/cases/sro-auditor.html">
+<link rel="alternate" hreflang="ru" href="https://maximrafikov.ru/cases/sro-auditor.html">
+<link rel="alternate" hreflang="en" href="https://maximrafikov.ru/en/cases/sro-auditor.html">
+<link rel="alternate" hreflang="x-default" href="https://maximrafikov.ru/cases/sro-auditor.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:site_name" content="Maxim Rafikov">
+<meta property="og:url" content="https://maximrafikov.ru/en/cases/sro-auditor.html">
+<meta property="og:title" content="SRO limit checks right in the browser">
+<meta property="og:description" content="Online SRO limit check: upload Excel/CSV, risk highlights, report. Files never leave your machine.">
+<meta property="og:image" content="https://maximrafikov.ru/assets/img/og-default.png?v=20260928b">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SRO limit checks right in the browser">
+<meta name="twitter:description" content="Online SRO limit check: upload Excel/CSV, risk highlights, report. Files never leave your machine.">
+<meta name="twitter:image" content="https://maximrafikov.ru/assets/img/og-default.png?v=20260928b">
+<link rel="icon" href="../../assets/favicon.ico" sizes="any">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../../assets/css/site.css?v=20260928c">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "SRO limit checks right in the browser — Maxim Rafikov",
+  "description": "Online SRO limit check: upload Excel/CSV, risk highlights, report. Files never leave your machine.",
+  "url": "https://maximrafikov.ru/en/cases/sro-auditor.html",
+  "image": "https://maximrafikov.ru/assets/img/og-default.png?v=20260928b",
+  "inLanguage": "en",
+  "author": {
+    "@type": "Person",
+    "name": "Maxim Rafikov",
+    "url": "https://maximrafikov.ru/en/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Maxim Rafikov",
+    "url": "https://maximrafikov.ru/en/"
+  }
+}
+</script>
+<script>
+(() => {
+  try {
+    const t = localStorage.getItem('mr-theme');
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  } catch (_) {}
+})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="container site-header__inner">
+    <div class="site-header__brand">
+      <a class="site-header__name" href="../index.html">
+        <img class="site-header__logo" src="../../assets/favicon.svg" alt="" width="28" height="28" decoding="async">
+        <span>Maxim Rafikov</span>
+      </a>
+    </div>
+    <div class="site-header__actions">
+      <nav class="lang-switch" aria-label="Language / Язык">
+        <a href="../../cases/sro-auditor.html" hreflang="ru" lang="ru">RU</a>
+        <span class="lang-switch__sep" aria-hidden="true">/</span>
+        <a href="sro-auditor.html" hreflang="en" lang="en" aria-current="page">EN</a>
+      </nav>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false">
+        <span data-theme-label>Dark</span>
+      </button>
+      <button
+        type="button"
+        class="nav-toggle"
+        data-nav-toggle
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Open menu"
+      >
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+      </button>
+    </div>
+    <nav class="site-nav" id="site-nav" aria-label="Site sections">
+      <a href="../index.html#situations">Tasks</a>
+      <a href="../index.html#cases">Cases</a>
+      <a href="../index.html#process">How we work</a>
+      <a href="../index.html#contacts">Contacts</a>
+    </nav>
+  </div>
+</header>
+
+
+<main id="main">
+  <article class="case-page">
+    <div class="container">
+      <p class="case-page__back"><a href="../index.html#cases">← All cases</a></p>
+
+      <header class="case-page__hero">
+        <p class="label">Case · 04</p>
+        <h1>SRO limit checks right in the browser</h1>
+        <p class="lead">
+          For SROs, a contractor’s tender desk, and companies with VV and ODO permits: if a contract limit is exceeded — permit risk. You need a “where it’s over” report without sending files to someone else’s server.
+        </p>
+      </header>
+
+      <dl class="case-page__figures">
+        <div>
+          <dt>Tool</dt>
+          <dd>live in the browser</dd>
+        </div>
+        <div>
+          <dt>Data</dt>
+          <dd>stays with you</dd>
+        </div>
+        <div>
+          <dt>Start</dt>
+          <dd>“demo data” button</dd>
+        </div>
+      </dl>
+
+      <figure class="case-page__preview case-page__preview--shot">
+        <img
+          src="../../assets/img/previews/sro-auditor.webp"
+          width="1280"
+          height="800"
+          alt="SRO Auditor risk summary after loading demo data: contracts and VV/ODO limit breaches"
+          loading="lazy"
+          decoding="async"
+        >
+        <figcaption>Live tool after “Demo data” — calculated in the browser, files not uploaded.</figcaption>
+      </figure>
+
+      <div class="case-page__body">
+        <section>
+          <h2>What I built</h2>
+          <p>
+            Built a browser check: upload two files — companies and contracts —
+            see where a limit is exceeded, what to recount by hand, and an Excel report.
+            Files never leave: everything runs on the user’s computer.
+          </p>
+        </section>
+        <section>
+          <h2>What you get</h2>
+          <ul>
+            <li>Online check of harm-compensation and contractual-obligation contributions</li>
+            <li>Excel/CSV upload, risk highlighting</li>
+            <li>Report download</li>
+            <li>You can press “Demo data” right away and see how the result looks</li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="case-page__actions">
+        <a class="button" href="https://maksimrafikov.github.io/sro-auditor/" target="_blank" rel="noopener">
+          Open the tool <span class="button__arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="link-quiet" href="../index.html#contacts">Similar task — write</a>
+      </div>
+
+      <p class="case-page__cta">
+        Need the same check for your file templates? <a href="../index.html#contacts">Describe the task →</a>
+      </p>
+    </div>
+  </article>
+</main>
+
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <p class="label">Contractor</p>
+        <p>Sole proprietor Maxim Fanisovich Rafikov<br>INN 027900892408 · OGRNIP 324028000202217<br>Ufa, working across Russia</p>
+      </div>
+      <div>
+        <p class="label">Get in touch</p>
+        <p><a href="../index.html#contacts">Phone, email, and task form</a></p>
+      </div>
+      <div>
+        <p class="label">Sections</p>
+        <nav class="site-footer__nav" aria-label="Footer sections">
+          <a href="../index.html#cases">Cases</a>
+          <a href="../index.html#process">How we work</a>
+          <a href="../index.html#contacts">Contacts</a>
+        </nav>
+      </div>
+    </div>
+    <div class="site-footer__legal">
+      <span>© 2026 Maxim Rafikov</span>
+      <a href="../politika-pdn.html">Personal data policy</a>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../../assets/js/site.js?v=20260928c" defer></script>
+</body>
+</html>

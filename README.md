@@ -1,6 +1,7 @@
 # Сайт-портфолио — Максим Рафиков
 
 Личный сайт для заказчиков и поиска: главная, кейсы и посадочные услуг.
+Английская версия: `/en/` (зеркало структуры + переключатель RU/EN в шапке).
 Индексация открыта (`index,follow`), есть `robots.txt`, `sitemap.xml`, Open Graph и JSON-LD.
 
 Статика: чистый HTML + CSS, JS — шапка, меню, тема, форма заявки.
@@ -37,13 +38,14 @@ python -m http.server 5173
 ## Структура
 
 ```
-index.html                 главная
+index.html                 главная (RU)
+en/                        английское зеркало (index, cases, uslugi, politika)
 cases/*.html               страницы кейсов
 uslugi/*.html              посадочные услуг
 politika-pdn.html          политика ПДн
-robots.txt / sitemap.xml   для поисковиков
+robots.txt / sitemap.xml   для поисковиков (RU + EN + hreflang)
 assets/css/site.css        дизайн-система
-assets/js/site.js          шапка, меню, тема, форма
+assets/js/site.js          шапка, меню, тема, форма (RU/EN по lang)
 assets/fonts/              self-hosted woff2 + fonts.css
 assets/img/                OG и превью кейсов
 _headers                   эталон security headers для CDN
