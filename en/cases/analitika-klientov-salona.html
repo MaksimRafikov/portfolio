@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'self'; upgrade-insecure-requests">
-<title>Which clients to call this week — Maxim Rafikov</title>
-<meta name="description" content="Client segmentation from booking data: 30,000+ clients, 130,000+ visits. Core / newcomers / at-risk lists.">
+<title>AI beauty-salon manager — Maxim Rafikov</title>
+<meta name="description" content="Dashboard on top of YClients: core, newcomers, growing, at-risk, dormant. Whom to call this week — without exporting the base. Live synthetic demo.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://maximrafikov.ru/en/cases/analitika-klientov-salona.html">
 <link rel="alternate" hreflang="ru" href="https://maximrafikov.ru/cases/analitika-klientov-salona.html">
@@ -17,14 +17,14 @@
 <meta property="og:locale:alternate" content="ru_RU">
 <meta property="og:site_name" content="Maxim Rafikov">
 <meta property="og:url" content="https://maximrafikov.ru/en/cases/analitika-klientov-salona.html">
-<meta property="og:title" content="Which clients to call this week">
-<meta property="og:description" content="Client segmentation from booking data: 30,000+ clients, 130,000+ visits. Core / newcomers / at-risk lists.">
+<meta property="og:title" content="AI beauty-salon manager">
+<meta property="og:description" content="Dashboard on top of YClients: core, newcomers, growing, at-risk, dormant. Whom to call this week — without exporting the base. Live synthetic demo.">
 <meta property="og:image" content="https://maximrafikov.ru/assets/img/og-default.png?v=20260928b">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Which clients to call this week">
-<meta name="twitter:description" content="Client segmentation from booking data: 30,000+ clients, 130,000+ visits. Core / newcomers / at-risk lists.">
+<meta name="twitter:title" content="AI beauty-salon manager">
+<meta name="twitter:description" content="Dashboard on top of YClients: core, newcomers, growing, at-risk, dormant. Whom to call this week — without exporting the base. Live synthetic demo.">
 <meta name="twitter:image" content="https://maximrafikov.ru/assets/img/og-default.png?v=20260928b">
 <link rel="icon" href="../../assets/favicon.ico" sizes="any">
 <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
@@ -36,8 +36,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Which clients to call this week — Maxim Rafikov",
-  "description": "Client segmentation from booking data: 30,000+ clients, 130,000+ visits. Core / newcomers / at-risk lists.",
+  "headline": "AI beauty-salon manager — Maxim Rafikov",
+  "description": "Dashboard on top of YClients: core, newcomers, growing, at-risk, dormant. Whom to call this week — without exporting the base. Live synthetic demo.",
   "url": "https://maximrafikov.ru/en/cases/analitika-klientov-salona.html",
   "image": "https://maximrafikov.ru/assets/img/og-default.png?v=20260928b",
   "inLanguage": "en",
@@ -110,61 +110,72 @@
       <p class="case-page__back"><a href="../index.html#cases">← All cases</a></p>
 
       <header class="case-page__hero">
-        <p class="label">Case · 08</p>
-        <h1>Which clients to call this week</h1>
+        <p class="label">Case · 01</p>
+        <h1>AI beauty-salon manager</h1>
         <p class="lead">
-          For beauty salons, clinics, and studios booking in YClients or similar: tens of thousands of people in the base, and the front desk does not know whom to call today.
+          For salons booking in YClients: see who holds revenue, who is quietly leaving,
+          and whom the front desk should call tomorrow — without Excel and without exporting the base.
         </p>
       </header>
 
       <dl class="case-page__figures">
         <div>
-          <dt>Clients in the review</dt>
-          <dd>30,000+</dd>
+          <dt>Tool</dt>
+          <dd>live dashboard</dd>
         </div>
         <div>
-          <dt>Visits</dt>
-          <dd>130,000+</dd>
+          <dt>Demo</dt>
+          <dd>synthetic M-Salon</dd>
         </div>
         <div>
-          <dt>Branches</dt>
-          <dd>2</dd>
+          <dt>Groups</dt>
+          <dd>5 segments</dd>
         </div>
       </dl>
 
-      <figure class="case-page__preview">
-        <img src="../../assets/img/previews/salon-analitika.svg" width="640" height="360" alt="Call priority schema: core, newcomers, at-risk — no names or phones">
-        <figcaption>Synthetic schema under the “Your salon” brand. Salon name and personal data are not published.</figcaption>
+      <figure class="case-page__preview case-page__preview--shot">
+        <img
+          src="../../assets/img/previews/ai-manager-beauty.webp"
+          width="1008"
+          height="630"
+          alt="AI manager dashboard: clients, revenue, and segments core / newcomers / growing / at-risk / dormant"
+          loading="lazy"
+          decoding="async"
+        >
+        <figcaption>Interactive demo on synthetic “M-Salon” data. Real salon name and personal data are not published.</figcaption>
       </figure>
 
       <div class="case-page__body">
         <section>
           <h2>What I built</h2>
           <p>
-            Connected visit records and segmented clients: core, newcomers, at-risk.
-            The owner sees the picture, the manager sees the shift, the sales person gets a ready call list.
-            Data is read-only: the program does not change salon records itself.
+            A management layer on top of YClients: clients fall into groups
+            “core / newcomers / growing / at-risk / dormant”, each with one clear action.
+            The owner sees the summary, the manager takes call lists,
+            the front desk dials a short list. Salon data is read locally;
+            public demo uses synthetic figures only.
           </p>
         </section>
         <section>
           <h2>What you get</h2>
           <ul>
-            <li>Segments “core / newcomers / at-risk”</li>
-            <li>Call lists and a no-show report</li>
-            <li>Weekly report</li>
-            <li>Install pack for Windows and macOS — without publishing the database online</li>
+            <li>Live dashboard with segments and weekly actions</li>
+            <li>Call lists, no-show report, Excel export</li>
+            <li>Install at the salon — without publishing the database online</li>
+            <li>YClients read-only; group labels optional</li>
           </ul>
           <p class="case-page__note">
-            Salon name and client phones are not published. Sales demos for others use
-            synthetic figures only under the “Your beauty salon” brand.
+            The online demo runs on fictional figures. Real client phones
+            and the customer salon name are not published.
           </p>
         </section>
       </div>
 
       <div class="case-page__actions">
-        <a class="button" href="../index.html#contacts">
-          Base review for your salon <span class="button__arrow" aria-hidden="true">→</span>
+        <a class="button" href="https://ai-manager-beauty.maximrafikov.ru/" target="_blank" rel="noopener">
+          Open demo <span class="button__arrow" aria-hidden="true">→</span>
         </a>
+        <a class="link-quiet" href="../index.html#contacts">Pilot on your data — write me</a>
       </div>
 
       <p class="case-page__cta">
